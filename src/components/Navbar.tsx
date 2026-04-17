@@ -75,7 +75,7 @@ export default function Navbar() {
           className="flex-shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-violet-700 flex items-center justify-center text-white font-black text-sm tracking-tight select-none"
           onClick={() => setMenuOpen(false)}
         >
-          ML
+          UE
         </Link>
 
         {/* Desktop nav */}

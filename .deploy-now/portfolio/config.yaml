@@ -1,0 +1,6 @@
+---
+service:
+  type: node-js
+  runtime: "22.0.0"
+  start-command: "node server.js"
+  port: 3000

@@ -37,6 +37,7 @@ jobs:
           CI: true
           SITE_URL: ${{ inputs.site-url }}
           DEPLOYMENT_FOLDER: out
+          WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
         run: |
           npm ci
           npm run build

@@ -13,9 +13,81 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ulises Escamilla — Full-Stack Developer",
+  title: "Ulises Escamilla — Desarrollador Full Stack en México | Laravel & React",
   description:
-    "Full-stack developer specializing in React, PHP, Python and modern web technologies.",
+    "Desarrollador Full Stack senior en México. Construyo aplicaciones web y móviles con Laravel, React y TypeScript. Entrego código limpio, arquitecturas sólidas y resultados medibles para empresas en México y LATAM.",
+  keywords: [
+    "desarrollador web freelance México",
+    "desarrollo web profesional México",
+    "programador Laravel React México",
+    "desarrollo aplicaciones web CDMX",
+    "full stack developer México",
+    "desarrollador TypeScript México",
+    "desarrollo software empresas México",
+    "React Native México",
+  ],
+  authors: [{ name: "Ulises Escamilla" }],
+  creator: "Ulises Escamilla",
+  metadataBase: new URL("https://escamilla.dev"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "es-MX": "/",
+    },
+  },
+  openGraph: {
+    title: "Ulises Escamilla — Desarrollador Full Stack en México",
+    description:
+      "Construyo aplicaciones web y móviles con Laravel, React y TypeScript. Arquitecturas sólidas, resultados medibles para empresas en México y LATAM.",
+    url: "https://escamilla.dev",
+    siteName: "Ulises Escamilla",
+    locale: "es_MX",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ulises Escamilla — Desarrollador Full Stack en México",
+    description:
+      "Construyo aplicaciones web y móviles con Laravel, React y TypeScript. Resultados medibles para empresas en México y LATAM.",
+    creator: "@ulisesescamilla",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+    },
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ulises Escamilla",
+  jobTitle: "Senior Full Stack Developer",
+  url: "https://escamilla.dev",
+  email: "ulisescruzescamilla@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "MX",
+  },
+  knowsAbout: [
+    "Laravel",
+    "React",
+    "TypeScript",
+    "React Native",
+    "AWS",
+    "Docker",
+    "PostgreSQL",
+    "CI/CD",
+  ],
+  sameAs: [
+    "https://github.com/ulisescruzescamilla",
+    "https://www.linkedin.com/in/ulises-escamilla/",
+  ],
 };
 
 export default function RootLayout({
@@ -25,9 +97,15 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es-MX"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#resume", label: "Resume" },
   { href: "#portfolio", label: "Portfolio" },
@@ -71,7 +70,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 h-full flex items-center justify-between">
         {/* Logo */}
         <Link
-          href="#home"
+          href="#about"
           className="flex-shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-violet-700 flex items-center justify-center text-white font-black text-sm tracking-tight select-none"
           onClick={() => setMenuOpen(false)}
         >
@@ -129,7 +128,7 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="lg:hidden flex flex-col justify-center items-center w-9 h-9 border border-slate-600 rounded gap-1.5 p-2"
+          className="lg:hidden flex flex-col justify-center items-center w-11 h-11 border border-slate-600 rounded gap-1.5 p-2"
           onClick={() => setMenuOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
@@ -150,13 +149,13 @@ export default function Navbar() {
       <div
         className={`lg:hidden overflow-hidden transition-all duration-500 bg-slate-800 border-b border-slate-700 ${menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
       >
-        <nav className="flex flex-col px-4 py-3 gap-1">
+        <nav className="flex flex-col px-4 py-2 gap-0">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="text-slate-300 hover:text-slate-100 py-2 text-sm font-medium border-b border-slate-700/50 last:border-0 transition-colors duration-200"
+              className="text-slate-300 hover:text-slate-100 py-3 text-sm font-medium border-b border-slate-700/50 last:border-0 transition-colors duration-200 min-h-[44px] flex items-center"
             >
               {link.label}
             </Link>

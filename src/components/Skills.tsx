@@ -10,11 +10,20 @@ import githubIcon from "thesvg/github";
 import mysqlIcon from "thesvg/mysql";
 import ubuntuIcon from "thesvg/ubuntu";
 import awsIcon from 'thesvg/aws';
+import javascriptIcon from "thesvg/javascript";
+import typeScriptIcon from "thesvg/typescript";
+import laravelIcon from "thesvg/laravel";
+import nextdotjsIcon from "thesvg/nextdotjs";
+import claudeIcon from "thesvg/claude";
+import tailwindcssIcon from "thesvg/tailwind-css";
+
 
 const skills = [
   { name: "React", icon: reactIcon.svg },
   { name: "PHP", icon: phpIcon.svg },
   { name: "Python", icon: pythonIcon.svg },
+  { name: "JavaScript", icon: javascriptIcon.svg},
+  { name: "TypeScript", icon: typeScriptIcon.svg},
   { name: "HTML5", icon: html5Icon.svg },
   { name: "CSS3", icon: cssIcon.svg },
   { name: "Git", icon: gitIcon.svg },
@@ -23,7 +32,12 @@ const skills = [
   { name: "GitHub", icon: githubIcon.svg },
   { name: "MySQL", icon: mysqlIcon.svg },
   { name: "Ubuntu", icon: ubuntuIcon.svg },
-  { name: "AWS", icon: awsIcon.svg}
+  { name: "AWS", icon: awsIcon.svg},
+  { name: "Laravel", icon: laravelIcon.svg},
+  { name: "Next.js", icon: nextdotjsIcon.svg },
+  { name: "React Native", icon: reactIcon.svg },
+  { name: "Claude", icon: claudeIcon.svg },
+  { name: "Tailwind CSS", icon: tailwindcssIcon.svg },
 ];
 
 export default function Skills() {

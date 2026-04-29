@@ -76,6 +76,8 @@ export const metadata: Metadata = {
 
 **`dangerouslySetInnerHTML` SVGs** (used in `Skills.tsx`) are invisible to crawlers as meaningful content. Skill names are already rendered as visible `<span>` text alongside each icon — keep that pattern.
 
+**Every function should be documented with JDocs
+
 ## Key notes
 
 - Path alias `@/` maps to `src/` (configured in `tsconfig.json`)

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -64,6 +66,14 @@ function IconRSS() {
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathName = usePathname();
+
+  const getPath = (href: string) => {
+    if (pathName === '/') {
+      return href
+    }
+    return process.env.NEXT_PUBLIC_SITE_URL + '/' + href
+  }
 
   return (
     <header className="sticky top-0 z-50 h-16 bg-slate-900/90 backdrop-blur border-b border-slate-700/50">
@@ -82,7 +92,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <Link
               key={link.href}
-              href={link.href}
+              href={getPath(link.href)}
               className="text-slate-400 hover:text-slate-200 text-sm font-medium transition-colors duration-200 hover:underline underline-offset-4"
             >
               {link.label}

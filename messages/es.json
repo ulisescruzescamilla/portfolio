@@ -1,0 +1,94 @@
+{
+  "nav": {
+    "about": "About",
+    "resume": "Resume",
+    "portfolio": "Portfolio",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "badge": "Senior Full Stack Developer · Remoto",
+    "headline": "Convierto problemas complejos en",
+    "headlineEmphasis": "software que escala y vende.",
+    "description": "Construyo aplicaciones web y móviles con Laravel, React y TypeScript. Entrego código limpio, arquitecturas sólidas y resultados medibles — sin que tengas que explicar lo mismo dos veces.",
+    "cta": "Hablemos de tu proyecto ↗",
+    "resume": "Ver resume",
+    "yearsLabel": "años construyendo apps en producción",
+    "usersLabel": "usuarios migrados sin pérdida de datos",
+    "salesLabel": "ciclo de ventas para cliente enterprise"
+  },
+  "skills": {
+    "heading": "Technologies I work with"
+  },
+  "portfolio": {
+    "heading": "Proyectos",
+    "viewProject": "Ver proyecto →",
+    "orbelineTagline": "Plataforma ERP para gestión de facturas, cotizaciones, pagos y certificados digitales.",
+    "zihuaTagline": "Landing page para sitio de terrenos en Zihuatanejo agregando flujos para selección de terreno a clientes interesados."
+  },
+  "contact": {
+    "heading": "Hablemos",
+    "subheading": "¿Tienes un proyecto en mente? Cuéntame.",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "contactField": "Correo o teléfono",
+    "contactPlaceholder": "tu@correo.com o +52 55 1234 5678",
+    "contactError": "Ingresa un correo o teléfono válido.",
+    "message": "Mensaje",
+    "messagePlaceholder": "Cuéntame sobre tu proyecto...",
+    "send": "Enviar mensaje",
+    "sending": "Enviando…",
+    "successHeading": "¡Mensaje enviado!",
+    "successBody": "Gracias por escribirme, {name}. Me pondré en contacto contigo pronto.",
+    "errorTooMany": "Demasiados intentos. Espera unos minutos e intenta de nuevo.",
+    "errorGeneric": "Algo salió mal. Intenta de nuevo.",
+    "errorNetwork": "Error de red. Revisa tu conexión e intenta de nuevo."
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "builtWith": "Construido con Next.js & Tailwind CSS"
+  },
+  "orbeline": {
+    "back": "← Proyectos",
+    "pageTitle": "Plataforma ERP para operaciones de seguros",
+    "desc1": "Orbeline centraliza la operación comercial de empresas mexicanas en un solo sistema: facturación electrónica, cotizaciones, pagos y pólizas digitales. El dashboard unificado da visibilidad inmediata sobre el estado financiero del negocio sin saltar entre herramientas.",
+    "desc2": "Desarrollé el backend con Laravel y la interfaz con React y TypeScript, integrando validación de CFDI y generación de PDF en tiempo real. El sistema maneja múltiples clientes con roles y permisos diferenciados, desplegado en AWS con contenedores Docker.",
+    "keyDecisions": "Decisiones clave",
+    "screenshots": "Capturas de pantalla",
+    "d1Title": "Métricas de cierre por vendedor",
+    "d1Body": "Cada vendedor accede a su propio dashboard con métricas de cierre mensual —primas emitidas, cobradas y pendientes— sin depender de reportes manuales. La visibilidad inmediata sobre su estado financiero les permite tomar decisiones antes de que cierre el mes.",
+    "d2Title": "Visibilidad para administradores y reparto de incentivos",
+    "d2Body": "Los administradores pueden comparar el rendimiento de cierre entre vendedores con datos históricos y de tendencia, facilitando la asignación de bonos e incentivos basada en evidencia y no en percepciones.",
+    "d3Title": "Flujo de trabajo end-to-end",
+    "d3Body": "La interfaz sigue el orden natural de la operación: cotizar → alta de cliente → emisión de póliza → cobro → facturación electrónica → corte y dispersión de comisiones. Cada paso avanza al siguiente sin saltar de herramienta, reduciendo errores de captura y tiempos muertos.",
+    "d4Title": "Reglas de negocio codificadas para cotización ágil",
+    "d4Body": "Las reglas para cotizar —rangos de edad, coberturas disponibles por producto, recargos y descuentos— vivían dispersas en la experiencia de los vendedores más antiguos. Plasmarlas en la plataforma acortó el onboarding de nuevos vendedores, eliminó errores de cálculo y homogeneizó las propuestas comerciales.",
+    "d5Title": "Pólizas con identidad de marca",
+    "d5Body": "Cada póliza se genera en PDF con el logotipo y colores de la aseguradora y el broker, eliminando el trabajo manual de diseño y maquetación. La emisión pasa de minutos a segundos y mantiene consistencia visual en todos los documentos.",
+    "altLogin": "Pantalla de inicio de sesión",
+    "altDashboard": "Dashboard principal con métricas y resumen de operaciones",
+    "altInvoice": "Visor de facturas con detalle de partidas",
+    "altCertificate": "Visor de certificados digitales",
+    "altPayments": "Módulo de gestión de pagos",
+    "altQuotations": "Módulo de cotizaciones"
+  },
+  "zihua": {
+    "back": "← Proyectos",
+    "pageTitle": "Landing page para venta de terrenos en Zihuatanejo",
+    "desc1": "Zihua Investments es una landing page diseñada para presentar y comercializar terrenos en Zihuatanejo, Guerrero. El sitio guía a clientes interesados a través de un flujo estructurado de selección de terreno, desde la exploración del catálogo hasta el contacto directo con el equipo de ventas.",
+    "desc2": "Desarrollé el sitio con Next.js y Tailwind CSS, priorizando una experiencia visual limpia y carga rápida. El flujo de selección de terreno reduce la fricción para el cliente y captura leads calificados de forma directa.",
+    "keyDecisions": "Decisiones clave",
+    "screenshots": "Capturas de pantalla",
+    "d1Title": "Flujo guiado de selección de terreno",
+    "d1Body": "En lugar de mostrar un catálogo genérico, el sitio lleva al visitante por un flujo paso a paso que filtra terrenos según sus preferencias —tamaño, ubicación y presupuesto—, reduciendo la incertidumbre y aumentando la tasa de contacto.",
+    "d2Title": "Carrusel visual de alto impacto",
+    "d2Body": "Los terrenos se presentan con una galería de imágenes de alta calidad en carrusel interactivo, destacando las vistas y características del entorno natural de Zihuatanejo para conectar emocionalmente con el comprador potencial.",
+    "d3Title": "Métricas del desarrollo como argumento de venta",
+    "d3Body": "Una sección de indicadores clave —número de terrenos disponibles, hectáreas, amenidades y plusvalía estimada— convierte datos del proyecto en argumentos concretos para el comprador, generando confianza antes del primer contacto.",
+    "d4Title": "Video promocional integrado",
+    "d4Body": "La sección de video ofrece una vista aérea del desarrollo, ambientando al visitante en el entorno costero y reforzando la propuesta de valor sin necesitar texto adicional.",
+    "altHero": "Vista principal de la landing page de Zihua Investments",
+    "altCarousel": "Carrusel de terrenos disponibles con galería de imágenes",
+    "altMetrics": "Sección de métricas e indicadores del proyecto",
+    "altVideo": "Sección de video promocional del desarrollo"
+  }
+}

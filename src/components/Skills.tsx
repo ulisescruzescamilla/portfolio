@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import reactIcon from "thesvg/react";
 import phpIcon from "thesvg/php";
 import pythonIcon from "thesvg/python";
@@ -40,12 +43,21 @@ const skills = [
   { name: "Tailwind CSS", icon: tailwindcssIcon.svg },
 ];
 
-export default function Skills() {
+/**
+ * Skills section: renders a grid of technologies the author works with.
+ * Each entry pairs an inline SVG icon with a visible label so the skill
+ * names remain crawlable.
+ *
+ * @returns The skills section element.
+ */
+export default function Skills(): React.ReactElement {
+  const t = useTranslations("skills");
+
   return (
     <section id="about" className="py-16 px-4">
       <div className="max-w-3xl mx-auto">
         <h2 className="text-slate-400 text-sm font-semibold uppercase tracking-widest mb-8">
-          Technologies I work with
+          {t("heading")}
         </h2>
         <div className="grid grid-cols-4 sm:grid-cols-6 gap-6">
           {skills.map((skill) => (

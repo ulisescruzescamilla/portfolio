@@ -3,16 +3,22 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
+/** Translation key suffixes for the nav links, in render order. */
+type NavLinkKey = "about" | "resume" | "portfolio" | "contact";
 
-const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#resume", label: "Resume" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#contact", label: "Contact" },
+/** Anchor + translation-key pairs that drive both desktop and mobile nav. */
+const NAV_LINKS: ReadonlyArray<{ href: string; key: NavLinkKey }> = [
+  { href: "#about", key: "about" },
+  { href: "#resume", key: "resume" },
+  { href: "#portfolio", key: "portfolio" },
+  { href: "#contact", key: "contact" },
 ];
 
-function IconGitHub() {
+/** GitHub icon SVG. */
+function IconGitHub(): React.ReactElement {
   return (
     <svg
       aria-hidden="true"
@@ -25,7 +31,8 @@ function IconGitHub() {
   );
 }
 
-function IconLinkedIn() {
+/** LinkedIn icon SVG. */
+function IconLinkedIn(): React.ReactElement {
   return (
     <svg
       aria-hidden="true"
@@ -38,7 +45,8 @@ function IconLinkedIn() {
   );
 }
 
-function IconEmail() {
+/** Email icon SVG. */
+function IconEmail(): React.ReactElement {
   return (
     <svg
       aria-hidden="true"
@@ -51,7 +59,8 @@ function IconEmail() {
   );
 }
 
-function IconRSS() {
+/** RSS / blog icon SVG. */
+function IconRSS(): React.ReactElement {
   return (
     <svg
       aria-hidden="true"
@@ -64,16 +73,32 @@ function IconRSS() {
   );
 }
 
-export default function Navbar() {
+/**
+ * Site header / primary navigation. Renders the logo, anchor links,
+ * social icons, and the {@link LanguageSwitcher} for both desktop and
+ * mobile breakpoints. Anchor hrefs are rewritten on non-root pages so
+ * they always resolve back to the home-page section.
+ *
+ * @returns The sticky navbar element.
+ */
+export default function Navbar(): React.ReactElement {
+  const t = useTranslations("nav");
   const [menuOpen, setMenuOpen] = useState(false);
   const pathName = usePathname();
 
-  const getPath = (href: string) => {
-    if (pathName === '/') {
-      return href
+  /**
+   * Resolves an anchor `href` to either an in-page hash (when on the
+   * root path) or an absolute URL pointing back to the home page.
+   *
+   * @param href - The hash-style href, e.g. `"#contact"`.
+   * @returns The href to use for the link.
+   */
+  const getPath = (href: string): string => {
+    if (pathName === "/") {
+      return href;
     }
-    return process.env.NEXT_PUBLIC_SITE_URL + '/' + href
-  }
+    return process.env.NEXT_PUBLIC_SITE_URL + "/" + href;
+  };
 
   return (
     <header className="sticky top-0 z-50 h-16 bg-slate-900/90 backdrop-blur border-b border-slate-700/50">
@@ -89,18 +114,18 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={getPath(link.href)}
               className="text-slate-400 hover:text-slate-200 text-sm font-medium transition-colors duration-200 hover:underline underline-offset-4"
             >
-              {link.label}
+              {t(link.key)}
             </Link>
           ))}
         </nav>
 
-        {/* Desktop social icons */}
+        {/* Desktop social icons + language switcher */}
         <div className="hidden lg:flex items-center gap-4">
           <a
             href="#blog"
@@ -134,6 +159,10 @@ export default function Navbar() {
           >
             <IconLinkedIn />
           </a>
+          <span aria-hidden="true" className="text-slate-700">
+            |
+          </span>
+          <LanguageSwitcher />
         </div>
 
         {/* Mobile hamburger */}
@@ -160,14 +189,14 @@ export default function Navbar() {
         className={`lg:hidden overflow-hidden transition-all duration-500 bg-slate-800 border-b border-slate-700 ${menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
       >
         <nav className="flex flex-col px-4 py-2 gap-0">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className="text-slate-300 hover:text-slate-100 py-3 text-sm font-medium border-b border-slate-700/50 last:border-0 transition-colors duration-200 min-h-[44px] flex items-center"
             >
-              {link.label}
+              {t(link.key)}
             </Link>
           ))}
         </nav>
@@ -184,6 +213,10 @@ export default function Navbar() {
           <a href="https://linkedin.com/in/ulises-escamilla" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-slate-400 hover:text-slate-200 transition-colors">
             <IconLinkedIn />
           </a>
+          <span aria-hidden="true" className="text-slate-700">
+            |
+          </span>
+          <LanguageSwitcher />
         </div>
       </div>
     </header>

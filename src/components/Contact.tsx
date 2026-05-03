@@ -1,10 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-function Spinner() {
+/**
+ * Inline loading spinner used inside the submit button.
+ *
+ * @returns A small animated spinner SVG.
+ */
+function Spinner(): React.ReactElement {
   return (
     <svg
       aria-hidden="true"
@@ -29,14 +35,28 @@ function Spinner() {
   );
 }
 
-// Accepts email OR a phone number (7–15 digits, optional leading +/spaces/dashes)
+/**
+ * Validates that the input is either a well-formed email address or a
+ * phone number with 7-15 digits (plus optional `+`, spaces, dashes, parentheses).
+ *
+ * @param value - Raw input from the contact field.
+ * @returns `true` if the value looks like an email or phone number.
+ */
 function isValidContact(value: string): boolean {
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRe = /^\+?[\d\s\-().]{7,20}$/;
   return emailRe.test(value) || phoneRe.test(value);
 }
 
-export default function Contact() {
+/**
+ * Contact section: renders the lead-capture form, handles submission to
+ * `/api/contact`, and shows a success or error state. Includes a
+ * honeypot field for bot mitigation.
+ *
+ * @returns The contact section element.
+ */
+export default function Contact(): React.ReactElement {
+  const t = useTranslations("contact");
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [contactError, setContactError] = useState("");
@@ -46,20 +66,32 @@ export default function Contact() {
   // Honeypot — must stay empty
   const [honeypot, setHoneypot] = useState("");
 
-  function handleContactBlur() {
+  /**
+   * Validates the contact field on blur and surfaces an inline error if
+   * the value is non-empty and not a valid email/phone.
+   */
+  function handleContactBlur(): void {
     if (contact && !isValidContact(contact)) {
-      setContactError("Ingresa un correo o teléfono válido.");
+      setContactError(t("contactError"));
     } else {
       setContactError("");
     }
   }
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  /**
+   * Handles form submission: validates input, posts to the API, and
+   * updates the UI based on the response.
+   *
+   * @param e - The form submit event.
+   */
+  async function handleSubmit(
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> {
     e.preventDefault();
     if (honeypot) return; // silent bot drop
 
     if (!isValidContact(contact)) {
-      setContactError("Ingresa un correo o teléfono válido.");
+      setContactError(t("contactError"));
       return;
     }
 
@@ -81,12 +113,12 @@ export default function Contact() {
       const data: { error?: string } = await res.json().catch(() => ({}));
       setErrorMsg(
         res.status === 429
-          ? "Demasiados intentos. Espera unos minutos e intenta de nuevo."
-          : (data.error ?? "Algo salió mal. Intenta de nuevo.")
+          ? t("errorTooMany")
+          : (data.error ?? t("errorGeneric"))
       );
       setStatus("error");
     } catch {
-      setErrorMsg("Error de red. Revisa tu conexión e intenta de nuevo.");
+      setErrorMsg(t("errorNetwork"));
       setStatus("error");
     }
   }
@@ -113,11 +145,10 @@ export default function Contact() {
             </svg>
           </div>
           <h2 className="text-2xl font-medium text-slate-100 mb-3">
-            ¡Mensaje enviado!
+            {t("successHeading")}
           </h2>
           <p className="text-slate-400 leading-relaxed">
-            Gracias por escribirme, {name}. Me pondré en contacto contigo
-            pronto.
+            {t("successBody", { name })}
           </p>
         </div>
       </section>
@@ -130,11 +161,9 @@ export default function Contact() {
     <section id="contact" className="px-4 py-20 lg:py-32">
       <div className="mx-auto max-w-xl">
         <h2 className="text-3xl font-medium text-slate-100 mb-2">
-          Hablemos
+          {t("heading")}
         </h2>
-        <p className="text-slate-400 mb-10">
-          ¿Tienes un proyecto en mente? Cuéntame.
-        </p>
+        <p className="text-slate-400 mb-10">{t("subheading")}</p>
 
         <form onSubmit={handleSubmit} noValidate>
           {/* Honeypot — hidden from humans, traps bots */}
@@ -155,7 +184,7 @@ export default function Contact() {
                 htmlFor="contact-name"
                 className="block text-sm font-medium text-slate-300 mb-1.5"
               >
-                Nombre
+                {t("name")}
               </label>
               <input
                 id="contact-name"
@@ -165,7 +194,7 @@ export default function Contact() {
                 required
                 maxLength={100}
                 disabled={isLoading}
-                placeholder="Tu nombre"
+                placeholder={t("namePlaceholder")}
                 className="w-full px-4 py-3 rounded-md bg-slate-800 border border-slate-700 text-slate-100 placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 transition"
               />
             </div>
@@ -175,7 +204,7 @@ export default function Contact() {
                 htmlFor="contact-contact"
                 className="block text-sm font-medium text-slate-300 mb-1.5"
               >
-                Correo o teléfono
+                {t("contactField")}
               </label>
               <input
                 id="contact-contact"
@@ -189,7 +218,7 @@ export default function Contact() {
                 required
                 maxLength={100}
                 disabled={isLoading}
-                placeholder="tu@correo.com o +52 55 1234 5678"
+                placeholder={t("contactPlaceholder")}
                 aria-describedby={contactError ? "contact-contact-error" : undefined}
                 aria-invalid={!!contactError}
                 className={`w-full px-4 py-3 rounded-md bg-slate-800 border text-slate-100 placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 transition ${
@@ -208,7 +237,7 @@ export default function Contact() {
                 htmlFor="contact-message"
                 className="block text-sm font-medium text-slate-300 mb-1.5"
               >
-                Mensaje
+                {t("message")}
               </label>
               <textarea
                 id="contact-message"
@@ -218,7 +247,7 @@ export default function Contact() {
                 maxLength={2000}
                 rows={5}
                 disabled={isLoading}
-                placeholder="Cuéntame sobre tu proyecto..."
+                placeholder={t("messagePlaceholder")}
                 className="w-full px-4 py-3 rounded-md bg-slate-800 border border-slate-700 text-slate-100 placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 resize-none transition"
               />
               <p className="text-xs text-slate-500 mt-1 text-right">
@@ -240,10 +269,10 @@ export default function Contact() {
               {isLoading ? (
                 <>
                   <Spinner />
-                  Enviando…
+                  {t("sending")}
                 </>
               ) : (
-                "Enviar mensaje"
+                t("send")
               )}
             </button>
           </div>

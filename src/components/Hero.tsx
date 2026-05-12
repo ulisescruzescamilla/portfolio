@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import heroImage from "../../public/hero.png";
 
 const TECH_PILLS = [
@@ -13,34 +16,41 @@ const TECH_PILLS = [
   "CI/CD",
 ] as const;
 
-const PROOF_STATS: ReadonlyArray<{ num: string; label: string }> = [
-  { num: "8+", label: "años construyendo apps en producción" },
-  { num: "20k+", label: "usuarios migrados sin pérdida de datos" },
-  { num: "−60%", label: "ciclo de ventas para cliente enterprise" },
+/** Translation key suffixes for the proof-stat labels. */
+const PROOF_STATS: ReadonlyArray<{ num: string; labelKey: "yearsLabel" | "usersLabel" | "salesLabel" }> = [
+  { num: "8+", labelKey: "yearsLabel" },
+  { num: "20k+", labelKey: "usersLabel" },
+  { num: "−60%", labelKey: "salesLabel" },
 ];
 
-export default function Hero() {
+/**
+ * Hero section: headline, intro copy, tech pills, primary CTAs, and proof stats.
+ * Acts as the landing surface and contains the page's single `<h1>`.
+ *
+ * @returns The hero section element.
+ */
+export default function Hero(): React.ReactElement {
+  const t = useTranslations("hero");
+
   return (
     <section id="about" className="flex-1 flex items-center px-4 py-14 lg:py-32">
       <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-2">
         {/* Left column */}
         <div>
           <p className="text-xs font-medium tracking-widest uppercase text-slate-400 mb-3">
-            Senior Full Stack Developer · Remoto
+            {t("badge")}
           </p>
 
           <h1 className="text-3xl lg:text-5xl font-medium leading-snug text-slate-100 mb-5">
-            Convierto problemas complejos en
+            {t("headline")}
             <br />
             <em className="not-italic text-blue-500">
-              software que escala y vende.
+              {t("headlineEmphasis")}
             </em>
           </h1>
 
           <p className="text-sm lg:text-base leading-relaxed text-slate-400 max-w-xl mb-8">
-            Construyo aplicaciones web y móviles con Laravel, React y TypeScript.
-            Entrego código limpio, arquitecturas sólidas y resultados medibles —
-            sin que tengas que explicar lo mismo dos veces.
+            {t("description")}
           </p>
 
           <ul className="flex flex-wrap gap-2 mb-8">
@@ -59,13 +69,13 @@ export default function Hero() {
               href="#contact"
               className="text-sm font-medium px-6 py-3 rounded-md bg-blue-600 text-white hover:bg-blue-500 transition-colors duration-200 min-h-[44px] flex items-center"
             >
-              Hablemos de tu proyecto ↗
+              {t("cta")}
             </Link>
             <Link
               href="#resume"
               className="text-sm font-medium px-6 py-3 rounded-md border border-slate-600 text-slate-100 hover:border-slate-400 transition-colors duration-200 min-h-[44px] flex items-center"
             >
-              Ver resume
+              {t("resume")}
             </Link>
           </div>
 
@@ -78,7 +88,7 @@ export default function Hero() {
                   {stat.num}
                 </dd>
                 <dt className="text-xs text-slate-400 leading-snug mt-0.5">
-                  {stat.label}
+                  {t(stat.labelKey)}
                 </dt>
               </div>
             ))}

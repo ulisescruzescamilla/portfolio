@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { LocaleProvider } from "@/i18n/LocaleProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -90,6 +91,17 @@ const jsonLd = {
   ],
 };
 
+/**
+ * Root layout for the portfolio site.
+ * Wraps the entire application in {@link LocaleProvider} so that any
+ * descendant client component can access translations via `useTranslations`
+ * from `next-intl`. The `<html lang>` attribute stays static (`es-MX`)
+ * because we use `output: 'export'` and locale switching happens client-side.
+ *
+ * @param props - The layout props.
+ * @param props.children - Page content to render.
+ * @returns The root HTML document.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -106,7 +118,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <LocaleProvider>{children}</LocaleProvider>
+      </body>
     </html>
   );
 }

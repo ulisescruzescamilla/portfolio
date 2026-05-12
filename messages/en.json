@@ -1,0 +1,94 @@
+{
+  "nav": {
+    "about": "About",
+    "resume": "Resume",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Senior Full Stack Developer · Remote",
+    "headline": "I turn complex problems into",
+    "headlineEmphasis": "software that scales and sells.",
+    "description": "I build web and mobile applications with Laravel, React, and TypeScript. I deliver clean code, solid architectures, and measurable results — without you having to explain the same thing twice.",
+    "cta": "Let's talk about your project ↗",
+    "resume": "View resume",
+    "yearsLabel": "years building production apps",
+    "usersLabel": "users migrated without data loss",
+    "salesLabel": "sales cycle reduction for enterprise client"
+  },
+  "skills": {
+    "heading": "Technologies I work with"
+  },
+  "portfolio": {
+    "heading": "Projects",
+    "viewProject": "View project →",
+    "orbelineTagline": "ERP platform for managing invoices, quotations, payments, and digital certificates.",
+    "zihuaTagline": "Landing page for a land development in Zihuatanejo with selection flows for interested clients."
+  },
+  "contact": {
+    "heading": "Let's talk",
+    "subheading": "Have a project in mind? Tell me about it.",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "contactField": "Email or phone",
+    "contactPlaceholder": "you@email.com or +1 555 123 4567",
+    "contactError": "Please enter a valid email or phone number.",
+    "message": "Message",
+    "messagePlaceholder": "Tell me about your project...",
+    "send": "Send message",
+    "sending": "Sending…",
+    "successHeading": "Message sent!",
+    "successBody": "Thanks for reaching out, {name}. I'll get back to you soon.",
+    "errorTooMany": "Too many attempts. Wait a few minutes and try again.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorNetwork": "Network error. Check your connection and try again."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "builtWith": "Built with Next.js & Tailwind CSS"
+  },
+  "orbeline": {
+    "back": "← Projects",
+    "pageTitle": "ERP platform for insurance operations",
+    "desc1": "Orbeline centralizes the commercial operations of Mexican companies into a single system: electronic billing, quotations, payments, and digital policies. The unified dashboard provides immediate visibility into the financial state of the business without jumping between tools.",
+    "desc2": "I developed the backend with Laravel and the interface with React and TypeScript, integrating CFDI validation and real-time PDF generation. The system handles multiple clients with differentiated roles and permissions, deployed on AWS with Docker containers.",
+    "keyDecisions": "Key decisions",
+    "screenshots": "Screenshots",
+    "d1Title": "Closing metrics per salesperson",
+    "d1Body": "Each salesperson accesses their own dashboard with monthly closing metrics — issued, collected, and pending premiums — without relying on manual reports. Immediate visibility into their financial status allows them to make decisions before the month ends.",
+    "d2Title": "Admin visibility and incentive distribution",
+    "d2Body": "Administrators can compare closing performance between salespeople using historical and trend data, facilitating evidence-based bonus and incentive assignments rather than perception-based ones.",
+    "d3Title": "End-to-end workflow",
+    "d3Body": "The interface follows the natural order of operations: quote → onboard client → issue policy → collect → electronic billing → commission cut and distribution. Each step advances to the next without switching tools, reducing data entry errors and idle time.",
+    "d4Title": "Codified business rules for agile quoting",
+    "d4Body": "The rules for quoting — age ranges, available coverages per product, surcharges and discounts — were scattered across the experience of senior salespeople. Encoding them in the platform shortened onboarding for new salespeople, eliminated calculation errors, and standardized commercial proposals.",
+    "d5Title": "Policies with brand identity",
+    "d5Body": "Each policy is generated in PDF with the insurer and broker's logo and colors, eliminating manual design and layout work. Issuance goes from minutes to seconds and maintains visual consistency across all documents.",
+    "altLogin": "Login screen",
+    "altDashboard": "Main dashboard with metrics and operations summary",
+    "altInvoice": "Invoice viewer with line item detail",
+    "altCertificate": "Digital certificate viewer",
+    "altPayments": "Payment management module",
+    "altQuotations": "Quotations module"
+  },
+  "zihua": {
+    "back": "← Projects",
+    "pageTitle": "Landing page for land sales in Zihuatanejo",
+    "desc1": "Zihua Investments is a landing page designed to present and market land in Zihuatanejo, Guerrero. The site guides interested clients through a structured land selection flow, from catalog exploration to direct contact with the sales team.",
+    "desc2": "I developed the site with Next.js and Tailwind CSS, prioritizing a clean visual experience and fast loading. The land selection flow reduces friction for the client and captures qualified leads directly.",
+    "keyDecisions": "Key decisions",
+    "screenshots": "Screenshots",
+    "d1Title": "Guided land selection flow",
+    "d1Body": "Instead of showing a generic catalog, the site takes visitors through a step-by-step flow that filters land based on their preferences — size, location, and budget — reducing uncertainty and increasing contact rates.",
+    "d2Title": "High-impact visual carousel",
+    "d2Body": "The land is presented with a high-quality image gallery in an interactive carousel, highlighting the views and characteristics of Zihuatanejo's natural environment to emotionally connect with the potential buyer.",
+    "d3Title": "Development metrics as a sales argument",
+    "d3Body": "A section of key indicators — number of available lots, hectares, amenities, and estimated appreciation — converts project data into concrete arguments for the buyer, building trust before the first contact.",
+    "d4Title": "Integrated promotional video",
+    "d4Body": "The video section offers an aerial view of the development, situating the visitor in the coastal environment and reinforcing the value proposition without needing additional text.",
+    "altHero": "Main view of the Zihua Investments landing page",
+    "altCarousel": "Carousel of available lots with image gallery",
+    "altMetrics": "Metrics and project indicators section",
+    "altVideo": "Promotional video section of the development"
+  }
+}
